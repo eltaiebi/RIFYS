@@ -24,7 +24,7 @@ var CONFIG = {
     phoneRaw:  "+4921115888414",         // Für tel:-Links (nur Ziffern + +)
     email:     "Info@rifys.de",
     address:   "jut thakhwa warari cha 3ath",
-    hours:     "Mo–So: 06:00–20:00 Uhr",
+    hours:     "Täglich von 06:00 bis 20:00 Uhr",
     area:      "Düsseldorf &amp; Umgebung",
   },
 
@@ -136,7 +136,7 @@ var CONFIG = {
   faq: [
     {
       q: "Brauche ich für einen Krankentransport eine ärztliche Verordnung?",
-      a: "In der Regel ist für eine Krankenfahrt eine ärztliche Verordnung erforderlich. Diese erhalten Sie bei Ihrem Hausarzt oder dem behandelnden Facharzt. Wir unterstützen Sie gerne beim Ausfüllen der notwendigen Formulare und klären mit Ihrer Kasse vorab.",
+      a: "In der Regel ist für eine Krankenfahrt eine ärztliche Verordnung erforderlich. Diese erhalten Sie bei Ihrem Hausarzt oder dem behandelnden Facharzt.",
     },
     {
       q: "Übernimmt meine Krankenkasse die Transportkosten?",
