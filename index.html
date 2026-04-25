@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rifys Krankenbeförderung – Ihr zuverlässiger Partner für Patiententransporte. Sicher, pünktlich und einfühlsam zu jedem Arzttermin, jeder Klinik und jedem Dialysezentrum." />
+  <meta name="keywords" content="Krankenbeförderung, Patiententransport, Liegendtransport, Rollstuhltransport, Dialysefahrten, Krankentaxi" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Rifys Krankenbeförderung – Sicher & Zuverlässig" />
+  <meta property="og:description" content="Professionelle Krankenbeförderung mit Herz. Kassenabrechnung möglich. 24/7 erreichbar." />
+  <meta property="og:type" content="website" />
+  <title>Rifys Krankenbeförderung – Sicher, Pünktlich & Einfühlsam</title>
+
+  <!-- Google Fonts: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="header" id="header" role="banner">
+    <div class="container header__inner">
+
+      <a href="#start" class="header__logo" aria-label="Rifys – Zurück zur Startseite">
+        <img
+          src="logo.png"
+          alt="Rifys Krankenbeförderung"
+          class="header__logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+        />
+        <span class="header__logo-fallback" style="display:none">Rifys</span>
+      </a>
+
+      <nav class="nav" id="main-nav" aria-label="Hauptnavigation">
+        <ul class="nav__list" role="list">
+          <li><a href="#leistungen" class="nav__link">Leistungen</a></li>
+          <li><a href="#warum-wir" class="nav__link">Warum Rifys</a></li>
+          <li><a href="#faq" class="nav__link">FAQ</a></li>
+          <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <a href="tel:+4900000000000" class="btn btn--primary header__cta" id="header-phone">
+        Jetzt anrufen
+      </a>
+
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Menü öffnen"
+        aria-expanded="false"
+        aria-controls="main-nav"
+      >
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="start" aria-label="Willkommen bei Rifys Krankenbeförderung">
+      <div class="container hero__inner">
+
+        <div class="hero__content">
+          <span class="hero__badge" id="hero-badge">Ihr Transportpartner in Deutschland</span>
+          <h1 class="hero__title" id="hero-title">Sicher. Pünktlich.<br />Einfühlsam.</h1>
+          <p class="hero__subtitle" id="hero-subtitle">
+            Wir begleiten Sie zuverlässig zu Ihren Arztterminen, Kliniken und
+            Dialysezentren – mit Herz, Professionalität und Respekt.
+          </p>
+          <div class="hero__actions">
+            <a href="#kontakt" class="btn btn--primary btn--large">Fahrt anfragen</a>
+            <a href="tel:+4900000000000" class="btn btn--outlined btn--large" id="hero-phone">
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .93h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              Direkt anrufen
+            </a>
+          </div>
+          <div class="hero__trust">
+            <div class="hero__trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Kassenabrechnung möglich</span>
+            </div>
+            <div class="hero__trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>24/7 erreichbar</span>
+            </div>
+            <div class="hero__trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                <path d="M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+              <span>Geschultes Fachpersonal</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__media">
+          <div class="hero__image-wrap" id="hero-image-wrap">
+            <img
+              src="car.png"
+              alt="Rifys Krankenbeförderungsfahrzeug mit Fahrer und Patient im Rollstuhl"
+              class="hero__image"
+              id="hero-image"
+              onerror="document.getElementById('hero-image-wrap').classList.add('hero__image-wrap--fallback');this.style.display='none'"
+            />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICES
+    ============================================================ -->
+    <section class="services section" id="leistungen" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Unsere Leistungen</span>
+          <h2 class="section__title" id="services-heading">Was wir für Sie tun</h2>
+          <p class="section__desc">
+            Von der einfachen Sitzendfahrt bis zum qualifizierten Liegendtransport –
+            wir passen uns Ihren individuellen Bedürfnissen an.
+          </p>
+        </div>
+        <div class="services__grid" id="services-grid" role="list" aria-label="Leistungsübersicht">
+          <!-- Wird durch script.js aus CONFIG befüllt -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHY US
+    ============================================================ -->
+    <section class="why-us section section--alt" id="warum-wir" aria-labelledby="whyus-heading">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Unsere Stärken</span>
+          <h2 class="section__title" id="whyus-heading">Warum Rifys wählen?</h2>
+          <p class="section__desc">
+            Wir verstehen, dass jeder Transport mehr als nur eine Fahrt ist –
+            es ist Vertrauen, das wir täglich neu verdienen.
+          </p>
+        </div>
+        <div class="why-us__grid" id="whyus-grid" role="list" aria-label="Unsere Vorteile">
+          <!-- Wird durch script.js aus CONFIG befüllt -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ
+    ============================================================ -->
+    <section class="faq section" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Häufige Fragen</span>
+          <h2 class="section__title" id="faq-heading">Ihre Fragen – unsere Antworten</h2>
+          <p class="section__desc">
+            Alles, was Sie über Krankenbeförderung, Kassenabrechnung
+            und unseren Service wissen möchten.
+          </p>
+        </div>
+        <div class="faq__list" id="faq-list">
+          <!-- Wird durch script.js aus CONFIG befüllt -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+    ============================================================ -->
+    <section class="contact section section--alt" id="kontakt" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Fahrt buchen</span>
+          <h2 class="section__title" id="contact-heading">Fahrt anfragen &amp; Kontakt</h2>
+          <p class="section__desc">
+            Buchen Sie Ihre Fahrt schnell und einfach – oder kontaktieren Sie uns direkt.
+            Wir sind täglich von 06:00 bis 20:00 Uhr für Sie erreichbar.
+          </p>
+        </div>
+
+        <div class="contact__inner">
+
+          <!-- Contact Info -->
+          <div class="contact__info" aria-label="Kontaktinformationen">
+            <div class="contact__info-card">
+
+              <div class="contact__info-item">
+                <div class="contact__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .93h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact__info-label">Telefon</p>
+                  <a href="tel:+4900000000000" class="contact__info-value contact__info-link" id="contact-phone">+49 000 000 000</a>
+                </div>
+              </div>
+
+              <div class="contact__info-item">
+                <div class="contact__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact__info-label">E-Mail</p>
+                  <a href="mailto:info@rifys.de" class="contact__info-value contact__info-link" id="contact-email">info@rifys.de</a>
+                </div>
+              </div>
+
+              <div class="contact__info-item">
+                <div class="contact__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact__info-label">Adresse</p>
+                  <p class="contact__info-value" id="contact-address">Musterstraße 1, 12345 Musterstadt</p>
+                </div>
+              </div>
+
+              <div class="contact__info-item">
+                <div class="contact__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact__info-label">Öffnungszeiten</p>
+                  <p class="contact__info-value" id="contact-hours">Mo–Fr: 07:00–19:00 Uhr<br />Sa–So: 08:00–16:00 Uhr</p>
+                </div>
+              </div>
+
+              <div class="contact__info-item">
+                <div class="contact__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact__info-label">Einsatzgebiet</p>
+                  <p class="contact__info-value" id="contact-area">Region München &amp; Umgebung</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact__form-wrap">
+            <form
+              class="contact__form"
+              id="contact-form"
+              novalidate
+              aria-label="Fahrtformular"
+            >
+              <h3 class="contact__form-title">Fahrt buchen</h3>
+
+              <!-- Kontaktdaten -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Kontaktdaten</legend>
+                <div class="form__row">
+                  <div class="form__group">
+                    <label for="form-name" class="form__label">
+                      Ihr Name <span class="form__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="text" id="form-name" name="from_name" class="form__input"
+                      placeholder="Vorname und Name" required autocomplete="name" aria-required="true" />
+                  </div>
+                  <div class="form__group">
+                    <label for="form-patient-name" class="form__label">
+                      Name des Patienten <span class="form__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="text" id="form-patient-name" name="patient_name" class="form__input"
+                      placeholder="Vorname und Name" required aria-required="true" />
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="form__group">
+                    <label for="form-phone" class="form__label">
+                      Telefon <span class="form__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="tel" id="form-phone" name="from_phone" class="form__input"
+                      placeholder="+49 ..." required autocomplete="tel" aria-required="true" />
+                  </div>
+                  <div class="form__group">
+                    <label for="form-email" class="form__label">
+                      E-Mail <span class="form__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="email" id="form-email" name="from_email" class="form__input"
+                      placeholder="ihre@email.de" required autocomplete="email" aria-required="true" />
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Transport von -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Transport von</legend>
+                <div class="form__group">
+                  <label for="form-from-street" class="form__label">
+                    Straße und Hausnummer <span class="form__required" aria-hidden="true">*</span>
+                  </label>
+                  <input type="text" id="form-from-street" name="pickup_street" class="form__input"
+                    placeholder="Musterstraße 1" required aria-required="true" />
+                </div>
+                <div class="form__group">
+                  <label for="form-from-city" class="form__label">
+                    Postleitzahl und Ort <span class="form__required" aria-hidden="true">*</span>
+                  </label>
+                  <input type="text" id="form-from-city" name="pickup_city" class="form__input"
+                    placeholder="40210 Düsseldorf" required aria-required="true" />
+                </div>
+              </fieldset>
+
+              <!-- Transport nach -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Transport nach</legend>
+                <div class="form__group">
+                  <label for="form-to-street" class="form__label">
+                    Straße und Hausnummer <span class="form__required" aria-hidden="true">*</span>
+                  </label>
+                  <input type="text" id="form-to-street" name="destination_street" class="form__input"
+                    placeholder="Musterstraße 1" required aria-required="true" />
+                </div>
+                <div class="form__group">
+                  <label for="form-to-city" class="form__label">
+                    Postleitzahl und Ort <span class="form__required" aria-hidden="true">*</span>
+                  </label>
+                  <input type="text" id="form-to-city" name="destination_city" class="form__input"
+                    placeholder="40210 Düsseldorf" required aria-required="true" />
+                </div>
+              </fieldset>
+
+              <!-- Termindaten -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Termindaten</legend>
+                <div class="form__row form__row--3">
+                  <div class="form__group">
+                    <label for="form-date" class="form__label">
+                      Datum der Abholung <span class="form__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="date" id="form-date" name="pickup_date" class="form__input"
+                      required aria-required="true" />
+                  </div>
+                  <div class="form__group">
+                    <label for="form-pickup-time" class="form__label">
+                      Uhrzeit Abholung <span class="form__required" aria-hidden="true">*</span>
+                    </label>
+                    <input type="time" id="form-pickup-time" name="pickup_time" class="form__input"
+                      required aria-required="true" />
+                  </div>
+                  <div class="form__group">
+                    <label for="form-appt-time" class="form__label">Uhrzeit Termin</label>
+                    <input type="time" id="form-appt-time" name="appointment_time" class="form__input" />
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Angaben zum Transport -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Angaben zum Transport</legend>
+
+                <div class="form__group">
+                  <p class="form__label" id="label-transport-type">
+                    Transportart <span class="form__required" aria-hidden="true">*</span>
+                  </p>
+                  <div class="form__radio-group" role="radiogroup" aria-labelledby="label-transport-type">
+                    <label class="form__radio-item">
+                      <input type="radio" name="transport_type" value="Rollstuhl des Patienten" />
+                      <span>Ihr Rollstuhl</span>
+                    </label>
+                    <label class="form__radio-item">
+                      <input type="radio" name="transport_type" value="Unser Stuhl" />
+                      <span>Unser Stuhl</span>
+                    </label>
+                    <label class="form__radio-item">
+                      <input type="radio" name="transport_type" value="Tragestuhl" />
+                      <span>Tragend</span>
+                    </label>
+                    <label class="form__radio-item">
+                      <input type="radio" name="transport_type" value="Liegend" />
+                      <span>Liegend</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form__group">
+                  <p class="form__label" id="label-transport-voucher">
+                    Transportschein <span class="form__required" aria-hidden="true">*</span>
+                  </p>
+                  <div class="form__radio-group" role="radiogroup" aria-labelledby="label-transport-voucher">
+                    <label class="form__radio-item">
+                      <input type="radio" name="transport_voucher" value="Ja" />
+                      <span>Ja</span>
+                    </label>
+                    <label class="form__radio-item">
+                      <input type="radio" name="transport_voucher" value="Nein" />
+                      <span>Nein</span>
+                    </label>
+                    <label class="form__radio-item">
+                      <input type="radio" name="transport_voucher" value="Privat" />
+                      <span>Privat</span>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Zusätzliche Information -->
+              <div class="form__group">
+                <label for="form-message" class="form__label">Zusätzliche Information</label>
+                <textarea
+                  id="form-message"
+                  name="message"
+                  class="form__input form__textarea"
+                  placeholder="Weitere Hinweise zu Ihrer Fahrt, z.B. Treppenhaus, Begleitung, Hilfsmittel …"
+                  rows="4"
+                ></textarea>
+              </div>
+
+              <!-- DSGVO -->
+              <div class="form__group">
+                <label class="form__checkbox-item" id="form-consent-label">
+                  <input type="checkbox" id="form-consent" name="privacy_consent"
+                    required aria-required="true" />
+                  <span>
+                    Hiermit erkläre ich mich einverstanden, dass meine eingegebenen Daten elektronisch
+                    gespeichert und zum Zweck der Kontaktaufnahme verarbeitet werden.
+                    <span class="form__required" aria-hidden="true">*</span>
+                  </span>
+                </label>
+              </div>
+
+              <div
+                class="form__status"
+                id="form-status"
+                role="alert"
+                aria-live="polite"
+                aria-atomic="true"
+                hidden
+              ></div>
+
+              <button type="submit" class="btn btn--primary btn--full" id="form-submit">
+                <span id="form-btn-text">Fahrt anfragen</span>
+                <svg
+                  class="btn__spinner"
+                  id="form-spinner"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                  hidden
+                >
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 70" />
+                </svg>
+              </button>
+
+              <p class="form__note">
+                <span aria-hidden="true">*</span> Pflichtfelder. Ihre Daten werden vertraulich behandelt.
+              </p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+
+      <div class="footer__brand">
+        <a href="#start" aria-label="Rifys – Zurück zur Startseite">
+          <img
+            src="logo.png"
+            alt="Rifys Logo"
+            class="footer__logo"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+          />
+          <span class="footer__logo-fallback" style="display:none">Rifys</span>
+        </a>
+        <p class="footer__tagline">Ihr zuverlässiger Partner für Krankenbeförderung.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <h4 class="footer__nav-title">Navigation</h4>
+        <ul role="list">
+          <li><a href="#start" class="footer__link">Startseite</a></li>
+          <li><a href="#leistungen" class="footer__link">Leistungen</a></li>
+          <li><a href="#warum-wir" class="footer__link">Warum Rifys</a></li>
+          <li><a href="#faq" class="footer__link">FAQ</a></li>
+          <li><a href="#kontakt" class="footer__link">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h4 class="footer__nav-title">Kontakt</h4>
+        <p><a href="tel:+4900000000000" class="footer__link" id="footer-phone">+49 000 000 000</a></p>
+        <p><a href="mailto:info@rifys.de" class="footer__link" id="footer-email">info@rifys.de</a></p>
+        <p id="footer-address">Musterstraße 1, 12345 Musterstadt</p>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>
+          &copy; <span id="footer-year"></span>
+          <span id="footer-company-name">Rifys Krankenbeförderung</span>.
+          Alle Rechte vorbehalten.
+        </p>
+        <div class="footer__legal">
+          <a href="#" class="footer__link">Impressum</a>
+          <a href="#" class="footer__link">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Zurück nach oben" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
