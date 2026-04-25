@@ -434,21 +434,91 @@ function initHamburger() {
    CONTACT FORM — EmailJS Integration
    ──────────────────────────────────────────────────────────
    Template-Variablen in EmailJS:
-     {{from_name}}        – Name des Anfragenden
-     {{patient_name}}     – Name des Patienten
-     {{from_email}}       – E-Mail
-     {{from_phone}}       – Telefon
-     {{pickup_street}}    – Abholstraße
-     {{pickup_city}}      – Abholort
+     {{from_name}}          – Name des Anfragenden
+     {{patient_name}}       – Name des Patienten
+     {{from_email}}         – E-Mail
+     {{from_phone}}         – Telefon
+     {{pickup_street}}      – Abholstraße
+     {{pickup_city}}        – Abholort
      {{destination_street}} – Zielstraße
-     {{destination_city}} – Zielort
-     {{pickup_date}}      – Datum
-     {{pickup_time}}      – Uhrzeit Abholung
-     {{appointment_time}} – Uhrzeit Termin
-     {{transport_type}}   – Transportart
-     {{transport_voucher}}– Transportschein
-     {{message}}          – Zusätzliche Information
+     {{destination_city}}   – Zielort
+     {{pickup_date}}        – Datum
+     {{pickup_time}}        – Uhrzeit Abholung
+     {{appointment_time}}   – Uhrzeit Termin
+     {{transport_type}}     – Transportart
+     {{transport_voucher}}  – Transportschein
+     {{message}}            – Zusätzliche Information
 ────────────────────────────────────────────────────────── */
+
+/* ── Format-Validatoren ─────────────────────────────────── */
+var FIELD_VALIDATORS = {
+  from_phone: {
+    /* Erlaubt: +49..., 0049..., 0211..., Leerzeichen, -, /, () */
+    test: function (v) {
+      return /^(\+|00)?[0-9][\d\s\-\/\(\)]{6,19}$/.test(v.trim());
+    },
+    msg: "Bitte geben Sie eine gültige Telefonnummer ein (z.B. 0211 15888414 oder +49 211 15888414)."
+  },
+  from_email: {
+    test: function (v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+    },
+    msg: "Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@example.de)."
+  }
+};
+
+/* ── Inline-Fehler Hilfsfunktionen ──────────────────────── */
+function getOrCreateErrorEl(input) {
+  var id  = "field-err-" + input.name;
+  var el  = document.getElementById(id);
+  if (el) return el;
+  el = document.createElement("span");
+  el.id        = id;
+  el.className = "form__field-error";
+  el.setAttribute("role", "alert");
+  el.setAttribute("aria-live", "polite");
+  el.hidden    = true;
+  input.parentNode.insertBefore(el, input.nextSibling);
+  return el;
+}
+
+function showFieldError(input, msg) {
+  input.classList.add("is-error");
+  input.setAttribute("aria-invalid", "true");
+  var el = getOrCreateErrorEl(input);
+  el.textContent = msg;
+  el.hidden = false;
+}
+
+function clearFieldError(input) {
+  input.classList.remove("is-error");
+  input.removeAttribute("aria-invalid");
+  var el = document.getElementById("field-err-" + input.name);
+  if (el) { el.textContent = ""; el.hidden = true; }
+}
+
+/* Prüft ein einzelnes Textfeld (Pflicht + Format) */
+function validateSingleField(input) {
+  var v = input.value.trim();
+
+  /* Pflichtfeld leer? */
+  if (input.required && !v) {
+    showFieldError(input, "Dieses Feld ist ein Pflichtfeld.");
+    return false;
+  }
+
+  /* Format-Check */
+  var validator = FIELD_VALIDATORS[input.name];
+  if (validator && v && !validator.test(v)) {
+    showFieldError(input, validator.msg);
+    return false;
+  }
+
+  clearFieldError(input);
+  return true;
+}
+
+/* ── Formular initialisieren ────────────────────────────── */
 function initContactForm() {
   var form      = document.getElementById("contact-form");
   var submitBtn = document.getElementById("form-submit");
@@ -457,10 +527,30 @@ function initContactForm() {
   var statusBox = document.getElementById("form-status");
   if (!form) return;
 
-  /* Entferne Fehlerklasse bei Eingabe */
+  /* Heutiges Datum als min setzen */
+  var dateInput = form.querySelector("#form-date");
+  if (dateInput) {
+    var today = new Date();
+    var yyyy  = today.getFullYear();
+    var mm    = String(today.getMonth() + 1).padStart(2, "0");
+    var dd    = String(today.getDate()).padStart(2, "0");
+    dateInput.setAttribute("min", yyyy + "-" + mm + "-" + dd);
+  }
+
+  /* Blur-Validierung: Echtzeit-Feedback je Feld */
   form.querySelectorAll(".form__input").forEach(function (input) {
+    if (input.type === "radio" || input.type === "checkbox") return;
+    input.addEventListener("blur", function () {
+      validateSingleField(this);
+    });
     input.addEventListener("input", function () {
-      this.classList.remove("is-error");
+      /* Fehler sofort löschen sobald Inhalt geändert wird */
+      if (this.classList.contains("is-error")) {
+        var v = FIELD_VALIDATORS[this.name];
+        if (!v || (this.value.trim() && v.test(this.value))) {
+          clearFieldError(this);
+        }
+      }
     });
   });
 
@@ -483,39 +573,47 @@ function initContactForm() {
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    hideStatus(statusBox);
 
-    /* Textfeld-Validierung */
-    var valid = true;
-    form.querySelectorAll("input[required], textarea[required]").forEach(function (field) {
+    var valid        = true;
+    var firstInvalid = null;
+
+    /* ── Alle Text/Date/Time-Felder validieren ── */
+    form.querySelectorAll(".form__input").forEach(function (field) {
       if (field.type === "radio" || field.type === "checkbox") return;
-      if (!field.value.trim()) {
-        field.classList.add("is-error");
+      if (!validateSingleField(field)) {
         valid = false;
+        if (!firstInvalid) firstInvalid = field;
       }
     });
 
-    /* Radio-Gruppen validieren */
-    var radioGroups = ["transport_type", "transport_voucher"];
-    radioGroups.forEach(function (name) {
-      var radios = form.querySelectorAll('input[name="' + name + '"]');
+    /* ── Radio-Gruppen validieren ── */
+    ["transport_type", "transport_voucher"].forEach(function (name) {
+      var radios  = form.querySelectorAll('input[name="' + name + '"]');
       var checked = Array.prototype.some.call(radios, function (r) { return r.checked; });
       if (!checked) {
         valid = false;
         var wrap = radios[0] && radios[0].closest(".form__radio-group");
         if (wrap) wrap.classList.add("is-error");
+        if (!firstInvalid && radios[0]) firstInvalid = radios[0];
       }
     });
 
-    /* Datenschutz-Checkbox validieren */
+    /* ── Datenschutz-Checkbox validieren ── */
     var consent = form.querySelector("#form-consent");
     if (consent && !consent.checked) {
       valid = false;
       var consentWrap = consent.closest(".form__checkbox-item");
       if (consentWrap) consentWrap.classList.add("is-error");
+      if (!firstInvalid) firstInvalid = consent;
     }
 
     if (!valid) {
-      showStatus(statusBox, "is-error", "Bitte füllen Sie alle Pflichtfelder aus und stimmen Sie der Datenschutzerklärung zu.");
+      showStatus(statusBox, "is-error", "Bitte korrigieren Sie die markierten Felder, um fortzufahren.");
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+        firstInvalid.focus();
+      }
       return;
     }
 

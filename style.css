@@ -757,7 +757,27 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.12);
 }
 
-.form__input.is-error { border-color: var(--c-primary); }
+.form__input.is-error {
+  border-color: var(--c-primary);
+  background: #fdf5f5;
+}
+
+/* Inline field error message */
+.form__field-error {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--c-primary-dark);
+  margin-top: 0.3rem;
+  padding-left: 0.2rem;
+  line-height: 1.4;
+  animation: errFadeIn 160ms ease both;
+}
+.form__field-error[hidden] { display: none; }
+@keyframes errFadeIn {
+  from { opacity: 0; transform: translateY(-3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 .form__textarea { resize: vertical; min-height: 130px; }
 
