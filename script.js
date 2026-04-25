@@ -33,9 +33,9 @@ var CONFIG = {
      Anleitung: https://www.emailjs.com/docs/tutorial/overview/
   ────────────────────────────────────────────────────────── */
   emailjs: {
-    publicKey:  "DEIN_PUBLIC_KEY",       // ← EmailJS Public Key
-    serviceID:  "DEIN_SERVICE_ID",       // ← EmailJS Service ID
-    templateID: "DEIN_TEMPLATE_ID",      // ← EmailJS Template ID
+    publicKey:  "rIiNFTdUuoGdTMVDL",       // ← EmailJS Public Key
+    serviceID:  "service_babugsa",       // ← EmailJS Service ID
+    templateID: "template_c2v5onf",      // ← EmailJS Template ID (format: template_XXXXXXX)
   },
 
   /* ── Hero ─────────────────────────────────────────────── */
