@@ -207,7 +207,7 @@ function applyConfig() {
   var c = CONFIG.company;
 
   /* Phone — nur href aktualisieren für CTA-Buttons */
-  var phoneButtons = ["header-phone", "hero-phone"];
+  var phoneButtons = ["header-phone", "hero-phone", "fab-call"];
   phoneButtons.forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.setAttribute("href", "tel:" + c.phoneRaw);
